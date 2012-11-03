@@ -7,8 +7,9 @@
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
 	"create_window_at_startup": false,
 	"draw_minimap_border": true,
-	"font_size": 13.0,
+	"font_size": 14.0,
 	"highlight_line": false,
+	"hot_exit": true,
 	"ignored_packages":
 	[
 		"Vintage",
@@ -16,7 +17,7 @@
 	],
 	"line_numbers": true,
 	"open_files_in_new_window": true,
-	"remember_open_files": false,
+	"remember_open_files": true,
 	"show_full_path": true,
 	"theme": "Soda Dark.sublime-theme"
 }
