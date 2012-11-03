@@ -1,0 +1,12 @@
+{
+	"auto_upgrade_last_run": 1351879193,
+	"installed_packages":
+	[
+		"Package Control",
+		"Pretty JSON",
+		"sublime-jslint",
+		"SVN",
+		"Theme - Soda",
+		"YUI Compressor"
+	]
+}
