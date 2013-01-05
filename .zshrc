@@ -7,6 +7,15 @@ ZSH_THEME="clean"
 
 # Aliases
 alias bigcityblinking="ssh mattacular@bigcityblinking.org"
+alias sip="ssh mstills@sipreview"
+alias sil="ssh siutil@linp1nfs1"
+alias subl=/Applications/Sublime\\\ Text\\\ 2.app/Contents/SharedSupport/bin/subl
+alias linode="ssh 198.74.54.182"
+
+# CMS3 Build Aliases
+alias bpres="/Users/mstills/cms3-local-builder.sh presenter"
+alias cmsbuild="/Users/mstills/cms3-local-builder.sh"
+alias buildcms=cmsbuild
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
