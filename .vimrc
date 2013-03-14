@@ -17,6 +17,7 @@ set nostartofline
 set shortmess=atI
 set title
 set showcmd
+set tabstop=4
 
 " Automatic commands
 if has("autocmd")

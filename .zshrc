@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="clean"
 
-# Aliases
+# Server Aliases
 alias bigcityblinking="ssh mattacular@bigcityblinking.org"
 alias sip="ssh mstills@sipreview"
 alias sil="ssh siutil@linp1nfs1"
@@ -16,6 +16,9 @@ alias linode="ssh 198.74.54.182"
 alias bpres="/Users/mstills/cms3-local-builder.sh presenter"
 alias cmsbuild="/Users/mstills/cms3-local-builder.sh"
 alias buildcms=cmsbuild
+
+# Helper Aliases
+alias which='type -a' # better version of 'which'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -29,5 +32,16 @@ alias buildcms=cmsbuild
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # plugins=(git)
 
+# Disable Autocorrect (case-by-case)
+unsetopt correct_all
+alias knife='nocorrect knife'
+alias rvm='nocorrect rvm'
+alias npm='nocorrect npm'
+alias git='nocorrect git'
+alias node='nocorrect node'
+
+# Et cetera.
 source $ZSH/oh-my-zsh.sh
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
+export PATH=/usr/local/bin:$PATH
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
