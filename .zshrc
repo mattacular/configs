@@ -18,7 +18,7 @@ alias cmsbuild="/Users/mstills/cms3-local-builder.sh"
 alias buildcms=cmsbuild
 
 # Helper Aliases
-alias which='type -a' # better version of 'which'
+alias where='type -a' # better version of 'which'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
