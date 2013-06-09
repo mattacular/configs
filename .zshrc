@@ -17,25 +17,19 @@ ZSH_THEME="clean"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git)
 
-
-# load oh-my-zsh plugin configs
+# Load oh-my-zsh plugin configs
 source $ZSH/oh-my-zsh.sh
 
-# path
+# Path modifications
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH # mysql to path
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# disable auto-correct
-unsetopt correct_all
+# Options
+unsetopt correct_all	# Disable auto-correct
 unsetopt correct
-# alias knife='nocorrect knife'
-# alias rvm='nocorrect rvm'
-# alias npm='nocorrect npm'
-# alias git='nocorrect git'
-# alias node='nocorrect node'
-# alias grunt='nocorrect grunt'
+setopt BRACE_CCL		# Better brace expansion
 
 # Localhost Shortcut Aliases
 alias astart='sudo apachectl start'
@@ -61,6 +55,3 @@ alias subl=/Applications/Sublime\\\ Text\\\ 2.app/Contents/SharedSupport/bin/sub
 alias where='type -a' # better version of 'which'
 alias servedir=python -m SimpleHTTPServer # server current directory on port 8000
 alias ls='ls -alG'
-
-# IO 2.0 Aliases
-alias foodcritic='/Users/mstills/.rvm/gems/ruby-1.9.3-p392/gems/foodcritic-1.7.0/bin/foodcritic'
