@@ -1,3 +1,22 @@
+# playground server (for experiments)
+server {
+	listen 80;
+	root /www/playground;
+
+	server_name playground.bigcityblinking.org;
+
+	location / {
+		proxy_pass http://127.0.0.1:8080;
+		proxy_http_version 1.1;	# force http 1.1 (for websockets)
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_set_header Host $host;
+		
+		add_header 'Access-Control-Allow-Origin' '*';
+
+	} 
+}
+
 # bigcityblinking.org server
 server {
 	root /usr/share/nginx/www;
@@ -19,13 +38,13 @@ server {
 	}
 
 	# Exclude Rax theme assets from the static catchall below
-	location ~ ^/assets/(.*)$ {
-		alias /www/rax/themes/foundation/assets/$1;
-	}
+	#location ~ ^/assets/(.*)$ {
+	#	alias /www/rax/themes/foundation/assets/$1;
+	#}
 
-	# Server static assets from Rax app's static folder
+	# Server statics from Rax app folder
 	location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|pdf|txt|tar|wav|bmp|rtf|js|flv|swf|html|htm)$ {
-		root /www/rax/static;
+		root /www/rax;
 
 		# uncomment to go back to using public_html...
 		#root /www/public_html;

@@ -1,11 +1,17 @@
 [alias]
 	l = log --pretty=oneline -n 20 --graph
+	lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	lg = !"git lg1"
 	plog = log --graph --pretty=format:'%C(yellow)%h%Creset%C(blue)%d%Creset %C(white bold)%s%Creset %C(white dim)(by %an %ar)%Creset' --all
 	s = status -s
 	go = checkout -B
 [user]
 	name = Matt Stills
 	email = mattacular@gmail.com
+[github]
+	user = mattacular
+	token = 97cb24f061c0b8eff732569e3e77a3e0
 [credential]
 	helper = cache
 [color]
@@ -25,4 +31,4 @@
 	untracked = cyan
 [merge]
 	log = true
-
+	conflictstyle = diff3
