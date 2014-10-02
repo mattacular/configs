@@ -1,14 +1,15 @@
 # ~/.osx - mstills
 # sourced from: https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+#               https://gist.github.com/brandonb927/3195465
 
 ###############################################################################
-# General UI/UX                                                               #
+# General OS/UI/UX                                                            #
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-#scutil --set ComputerName "MathBook Pro"
-#scutil --set HostName "MathBook Pro"
-#scutil --set LocalHostName "MathBook-Pro"
+scutil --set ComputerName "Macbook Bro"
+scutil --set HostName "Macbook Bro"
+scutil --set LocalHostName "Macbook-Bro"
 
 # Menu bar: disable transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
@@ -38,6 +39,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 # Expand print panel by default
 #defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
+# Close printer app after job is complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -46,7 +50,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 #defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
 # Disable Resume system-wide
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
+#defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 #defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
@@ -54,6 +58,9 @@ defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 # Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
+
+# Write to disk instead of iCloud by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -89,11 +96,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Set language and text formats
-# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
-# `Inches`, and `true` with `false`.
 #defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
 #defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
 #defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
@@ -168,9 +173,9 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Don't automatically open a new Finder window when a volume is mounted
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool false
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool false
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool false
+#defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool false
+#defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool false
+#defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool false
 
 # Show item info below icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
@@ -217,7 +222,7 @@ unset file
 defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
 # Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+#defaults write com.apple.dock tilesize -int 36
 
 # Enable spring loading for all Dock items
 #defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
@@ -241,7 +246,7 @@ defaults write com.apple.dock "dashboard-in-overlay" -bool true
 #defaults write com.apple.Dock autohide-delay -float 0
 
 # Remove the animation when hiding/showing the Dock
-#defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Enable the 2D Dock
 #defaults write com.apple.dock no-glass -bool true
@@ -253,7 +258,7 @@ defaults write com.apple.dock autohide -bool true
 #defaults write com.apple.dock showhidden -bool true
 
 # Enable iTunes track notifications in the Dock
-defaults write com.apple.dock itunes-notifications -bool true
+#defaults write com.apple.dock itunes-notifications -bool true
 
 # Reset Launchpad
 #find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
@@ -287,7 +292,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write com.apple.Safari ShowFavoritesBar -bool false
 
 # Disable Safari’s thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+#defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
@@ -395,10 +400,26 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 
 # Show full names rather than Twitter handles
-defaults write com.twitter.twitter-mac ShowFullNames -bool true
+#defaults write com.twitter.twitter-mac ShowFullNames -bool true
 
 # Hide the app in the background if it’s not the front-most window
-defaults write com.twitter.twitter-mac HideInBackground -bool true
+#defaults write com.twitter.twitter-mac HideInBackground -bool true
+
+###############################################################################
+# Misc                                                                        #
+###############################################################################
+# Remove dupes from "Open with..." menu
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+# Disable keyboard backlighting following a 5 minute idle period
+defaults write com.apple.BezelServices kDimTime -int 300
+
+# Create a store for incomplete downloads @ ~/Downloads/Incomplete
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Incomplete"
+
+# Disable annoying backswipe gesture in Chrome browser
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
 ###############################################################################
 # Kill affected applications                                                  #
